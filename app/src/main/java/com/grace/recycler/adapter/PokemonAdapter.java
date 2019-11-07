@@ -2,10 +2,11 @@ package com.grace.recycler.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.grace.recycler.R;
 import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.grace.recycler.R;
 import com.grace.recycler.data.PokemonShort;
 
 public class PokemonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -31,5 +32,14 @@ public class PokemonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setItems(List<PokemonShort> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
+    public PokemonShort getItem(int position) {
+        if(items == null || items.size() <= position) return null;
+        return items.get(position);
     }
 }
